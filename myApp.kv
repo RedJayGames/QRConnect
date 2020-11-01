@@ -111,6 +111,7 @@ WindowManager:
 
         Button:
             text: "Return"
+            size_hint: 0.8, 0.1
             on_release:
                 app.root.current = "generate"
                 root.manager.transition.direction = "right"
@@ -119,18 +120,51 @@ WindowManager:
 <ScanScreen>:
     name: "scan"
 
-    Button:
-        text: "Return"
-        on_release:
-            app.root.current = "main"
-            root.manager.transition.direction = "right"
+    GridLayout:
+        rows:2
+
+        GridLayout:
+            cols: 2
+            size_hint: 1, 0.1
+
+            Button:
+                text: "Return"
+                size_hint: 0.1, 0.1
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "right"
+
+            Label:
+                text: ""
+                size_hint: 0.9, 0.1
+
+        Image:
+            source: 'camera.png'
+            size_hint: 0.9, 0.9
+
 
 
 <ContactScreen>:
     name: "contact"
 
-    Button:
-        text: "Return"
-        on_release:
-            app.root.current = "main"
-            root.manager.transition.direction = "right"
+    GridLayout:
+        rows:2
+
+        GridLayout:
+            cols: 2
+            size_hint: 1, 0.1
+
+            Button:
+                text: "Return"
+                size_hint: 0.1, 0.1
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "right"
+
+            Label:
+                text: ""
+                size_hint: 0.9, 0.1
+
+        Label:
+            text: "QR Connect was developed by Corbin Grosso\nQuestions? Complaints? Comments? Reach out!\nEmail: corby81019@gmail.com"
+            size_hint: 0.9, 0.9
