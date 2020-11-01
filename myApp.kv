@@ -1,0 +1,136 @@
+WindowManager:
+    MainScreen:
+    GenerateScreen:
+    QRScreen:
+    ScanScreen:
+    ContactScreen:
+
+<MainScreen>:
+    name: "main"
+
+    GridLayout:
+        cols:1
+        padding:100
+
+        Label:
+            text: "QR Connect\nLet's Get Connected"
+
+        Button:
+            text: "Create a QR Code"
+            on_release:
+                app.root.current = "generate"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Scan a QR Code"
+            on_release:
+                app.root.current = "scan"
+                root.manager.transition.direction = "left"
+
+        Button:
+            text: "Contact the Developer"
+            on_release:
+                app.root.current = "contact"
+                root.manager.transition.direction = "left"
+
+
+<GenerateScreen>:
+    name: "generate"
+
+    GridLayout:
+        cols:1
+
+        GridLayout:
+            cols:2
+
+            Button:
+                text: "Return"
+                size_hint: 0.1, 0.1
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "right"
+            Label:
+                text: ""
+
+        GridLayout:
+            cols:2
+            spacing: 0, 50
+
+            CheckBox:
+                on_active: root.checkbox_click(self.active, "Name", "John Smith")
+
+            Label:
+                text: "Name: John Smith"
+
+        GridLayout:
+            cols:2
+            spacing: 0, 50
+
+            CheckBox:
+                on_active: root.checkbox_click(self.active, "Phone Number", "1234567890")
+
+            Label:
+                text: "Phone Number: 1234567890"
+
+        GridLayout:
+            cols:2
+            spacing: 0, 50
+
+            CheckBox:
+                on_active: root.checkbox_click(self.active, "Company Email", "jsmith@gmail.com")
+
+            Label:
+                text: "Company Email: jsmith@gmail.com"
+
+        GridLayout:
+            cols:2
+            spacing: 0, 50
+
+            CheckBox:
+                on_active: root.checkbox_click(self.active, "Personal Email", "johnny1234@gmail.com")
+
+            Label:
+                text: "Personal Email: johnny123@gmail.com"
+
+        Button:
+            padding: 0, 50
+            text: "Generate"
+            on_release:
+                app.root.current = "qr"
+                root.manager.transition.direction = "left"
+
+
+<QRScreen>:
+    name: "qr"
+
+    GridLayout:
+        cols:1
+
+        Image:
+            source: root.generate_qr()
+
+        Button:
+            text: "Return"
+            on_release:
+                app.root.current = "generate"
+                root.manager.transition.direction = "right"
+
+
+<ScanScreen>:
+    name: "scan"
+
+    Button:
+        text: "Return"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+
+
+<ContactScreen>:
+    name: "contact"
+
+    Button:
+        text: "Return"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
